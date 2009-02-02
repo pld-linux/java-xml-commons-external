@@ -8,7 +8,7 @@ Summary:	Apache XML Commons External classes
 Summary(pl.UTF-8):	Klasy Apache XML Commons External
 Name:		java-xml-commons-external
 Version:	1.3.04
-Release:	2
+Release:	3
 License:	Apache v2.0
 Group:		Development/Languages/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}-src.tar.gz

@@ -10,7 +10,7 @@ Name:		java-xml-commons-external
 Version:	1.3.04
 Release:	3
 License:	Apache v2.0
-Group:		Development/Languages/Java
+Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}-src.tar.gz
 # Source0-md5:	5536f87a816c766f4999ed60593a8701
 # from http://svn.apache.org/repos/asf/xml/commons/trunk/java/external/build.xml

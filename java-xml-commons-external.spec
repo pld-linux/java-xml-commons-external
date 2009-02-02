@@ -8,7 +8,7 @@ Summary:	Apache XML Commons External classes
 Summary(pl.UTF-8):	Klasy Apache XML Commons External
 Name:		java-xml-commons-external
 Version:	1.3.04
-Release:	3
+Release:	4
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}-src.tar.gz
@@ -22,6 +22,8 @@ BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	jpackage-utils
+Provides:	xml-commons-external
+Obsoletes:	xml-commons-external
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,6 +42,7 @@ Summary:	javadoc documentation for Apache XML Commons External
 Summary(pl.UTF-8):	Dokumentacja javadoc dla pakietu Apache XML Commons External
 Group:		Documentation
 Requires:	jpackage-utils
+Obsoletes:	xml-commons-external-javadoc
 
 %description javadoc
 javadoc documentation for Apache XML Commons External.

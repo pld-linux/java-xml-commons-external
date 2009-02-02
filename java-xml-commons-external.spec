@@ -2,20 +2,22 @@
 # - something with org.apache.env.which (currently xml-commons-which.jar in
 #   xml-commons), then obsolete xml-commons here
 %include	/usr/lib/rpm/macros.java
+#
+%define	srcname	xml-commons-external
 Summary:	Apache XML Commons External classes
 Summary(pl.UTF-8):	Klasy Apache XML Commons External
-Name:		xml-commons-external
+Name:		java-xml-commons-external
 Version:	1.3.04
 Release:	2
 License:	Apache v2.0
 Group:		Development/Languages/Java
-Source0:	http://www.apache.org/dist/xml/commons/%{name}-%{version}-src.tar.gz
+Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}-src.tar.gz
 # Source0-md5:	5536f87a816c766f4999ed60593a8701
 # from http://svn.apache.org/repos/asf/xml/commons/trunk/java/external/build.xml
-Source1:	%{name}-build.xml
+Source1:	%{srcname}-build.xml
 URL:		http://xml.apache.org/commons/
 BuildRequires:	ant
-BuildRequires:	java-gcj-compat
+BuildRequires:	java-gcj-compat-devel
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
@@ -56,7 +58,7 @@ ln -s ../javax ../org ../manifest.commons src
 %build
 # default 64m is too low
 #export ANT_OPTS="-Xmx128m"
-%ant jar javadoc
+%ant -Dbuild.compiler=gcj jar javadoc
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -67,15 +69,15 @@ install build/xml-apis-ext.jar $RPM_BUILD_ROOT%{_javadir}/xml-apis-ext-%{version
 ln -s xml-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/xml-apis.jar
 ln -s xml-apis-ext-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/xml-apis-ext.jar
 
-install -d $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-cp -a build/docs/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{name}-%{version}
-ln -s %{name}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{name} # ghost symlink
+install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+cp -a build/docs/javadoc/* $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
+ln -s %{srcname}-%{version} $RPM_BUILD_ROOT%{_javadocdir}/%{srcname} # ghost symlink
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post javadoc
-ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
+ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 
 %files
 %defattr(644,root,root,755)
@@ -84,5 +86,5 @@ ln -nfs %{name}-%{version} %{_javadocdir}/%{name}
 
 %files javadoc
 %defattr(644,root,root,755)
-%{_javadocdir}/%{name}-%{version}
-%ghost %{_javadocdir}/%{name}
+%{_javadocdir}/%{srcname}-%{version}
+%ghost %{_javadocdir}/%{srcname}

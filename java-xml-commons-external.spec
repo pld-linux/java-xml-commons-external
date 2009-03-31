@@ -1,14 +1,22 @@
 # TODO
 # - something with org.apache.env.which (currently xml-commons-which.jar in
 #   xml-commons), then obsolete xml-commons here
+# Conditional build:
+%if "%{pld_release}" == "ti"
+%bcond_without	java_sun	# build with gcj
+%else
+%bcond_with	java_sun	# build with java-sun
+%endif
+#
 %include	/usr/lib/rpm/macros.java
 #
 %define	srcname	xml-commons-external
+
 Summary:	Apache XML Commons External classes
 Summary(pl.UTF-8):	Klasy Apache XML Commons External
 Name:		java-xml-commons-external
 Version:	1.3.04
-Release:	4
+Release:	5
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}-src.tar.gz
@@ -17,8 +25,10 @@ Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}-src.tar.gz
 Source1:	%{srcname}-build.xml
 URL:		http://xml.apache.org/commons/
 BuildRequires:	ant
-BuildRequires:	java-gcj-compat-devel
+%{!?with_java_sun:BuildRequires:        java-gcj-compat-devel}
+%{?with_java_sun:BuildRequires: java-sun}
 BuildRequires:	jpackage-utils
+BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	jpackage-utils
@@ -61,7 +71,7 @@ ln -s ../javax ../org ../manifest.commons src
 %build
 # default 64m is too low
 #export ANT_OPTS="-Xmx128m"
-%ant -Dbuild.compiler=gcj jar javadoc
+%ant jar javadoc
 
 %install
 rm -rf $RPM_BUILD_ROOT

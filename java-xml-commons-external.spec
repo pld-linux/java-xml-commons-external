@@ -1,12 +1,6 @@
 # TODO
 # - something with org.apache.env.which (currently xml-commons-which.jar in
 #   xml-commons), then obsolete xml-commons here
-# Conditional build:
-%if "%{pld_release}" == "ti"
-%bcond_without	java_sun	# build with gcj
-%else
-%bcond_with	java_sun	# build with java-sun
-%endif
 #
 %include	/usr/lib/rpm/macros.java
 #
@@ -25,8 +19,7 @@ Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}-src.tar.gz
 Source1:	%{srcname}-build.xml
 URL:		http://xml.apache.org/commons/
 BuildRequires:	ant
-%{!?with_java_sun:BuildRequires:        java-gcj-compat-devel}
-%{?with_java_sun:BuildRequires: java-sun}
+BuildRequires:	jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov

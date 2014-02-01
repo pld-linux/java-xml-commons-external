@@ -2,15 +2,14 @@
 # - something with org.apache.env.which (currently xml-commons-which.jar in
 #   xml-commons), then obsolete xml-commons here
 #
-%include	/usr/lib/rpm/macros.java
-#
-%define	srcname	xml-commons-external
 
+%define	srcname	xml-commons-external
+%include	/usr/lib/rpm/macros.java
 Summary:	Apache XML Commons External classes
 Summary(pl.UTF-8):	Klasy Apache XML Commons External
 Name:		java-xml-commons-external
 Version:	1.4.01
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}-src.tar.gz
@@ -25,7 +24,6 @@ BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	jpackage-utils
-Provides:	xml-commons-external
 Obsoletes:	xml-commons-external
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

@@ -24,6 +24,8 @@ BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	jpackage-utils
+Provides:	java(xml-commons-apis)
+Obsoletes:	java-xml-commons
 Obsoletes:	xml-commons-external
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -71,6 +73,7 @@ install -d $RPM_BUILD_ROOT%{_javadir}
 install build/xml-apis.jar $RPM_BUILD_ROOT%{_javadir}/xml-apis-%{version}.jar
 install build/xml-apis-ext.jar $RPM_BUILD_ROOT%{_javadir}/xml-apis-ext-%{version}.jar
 ln -s xml-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/xml-apis.jar
+ln -s xml-apis-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/xml-commons-apis.jar
 ln -s xml-apis-ext-%{version}.jar $RPM_BUILD_ROOT%{_javadir}/xml-apis-ext.jar
 
 install -d $RPM_BUILD_ROOT%{_javadocdir}/%{srcname}-%{version}
@@ -90,6 +93,7 @@ ln -nfs %{srcname}-%{version} %{_javadocdir}/%{srcname}
 %{_javadir}/xml-apis.jar
 %{_javadir}/xml-apis-ext-%{version}.jar
 %{_javadir}/xml-apis-ext.jar
+%{_javadir}/xml-commons-apis.jar
 
 %files javadoc
 %defattr(644,root,root,755)

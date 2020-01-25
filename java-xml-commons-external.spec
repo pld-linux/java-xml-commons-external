@@ -4,7 +4,6 @@
 #
 
 %define	srcname	xml-commons-external
-%include	/usr/lib/rpm/macros.java
 Summary:	Apache XML Commons External classes
 Summary(pl.UTF-8):	Klasy Apache XML Commons External
 Name:		java-xml-commons-external

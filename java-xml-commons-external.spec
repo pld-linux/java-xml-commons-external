@@ -11,11 +11,11 @@ Version:	1.4.01
 Release:	2
 License:	Apache v2.0
 Group:		Libraries/Java
-Source0:	http://www.apache.org/dist/xml/commons/%{srcname}-%{version}-src.tar.gz
+Source0:	https://downloads.apache.org/xerces/xml-commons/%{srcname}-%{version}-src.tar.gz
 # Source0-md5:	2fea8e97a5d4d1a24bd05f5f62f3e04e
 # from http://svn.apache.org/repos/asf/xml/commons/trunk/java/external/build.xml
 Source1:	%{srcname}-build.xml
-URL:		http://xml.apache.org/commons/
+URL:		https://xerces.apache.org/xml-commons/
 BuildRequires:	ant
 BuildRequires:	jdk
 BuildRequires:	jpackage-utils
@@ -24,8 +24,8 @@ BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	jpackage-utils
 Provides:	java(xml-commons-apis)
-Obsoletes:	java-xml-commons
-Obsoletes:	xml-commons-external
+Obsoletes:	java-xml-commons < 1.2
+Obsoletes:	xml-commons-external < 1.4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,7 +44,7 @@ Summary:	javadoc documentation for Apache XML Commons External
 Summary(pl.UTF-8):	Dokumentacja javadoc dla pakietu Apache XML Commons External
 Group:		Documentation
 Requires:	jpackage-utils
-Obsoletes:	xml-commons-external-javadoc
+Obsoletes:	xml-commons-external-javadoc < 1.4
 
 %description javadoc
 javadoc documentation for Apache XML Commons External.

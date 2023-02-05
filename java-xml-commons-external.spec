@@ -8,7 +8,7 @@ Summary:	Apache XML Commons External classes
 Summary(pl.UTF-8):	Klasy Apache XML Commons External
 Name:		java-xml-commons-external
 Version:	1.4.01
-Release:	2
+Release:	3
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	https://downloads.apache.org/xerces/xml-commons/%{srcname}-%{version}-src.tar.gz
@@ -23,7 +23,7 @@ BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	jpackage-utils
-Provides:	java(xml-commons-apis)
+Provides:	java(xml-commons-apis) = %{version}
 Obsoletes:	java-xml-commons < 1.2
 Obsoletes:	xml-commons-external < 1.4
 BuildArch:	noarch

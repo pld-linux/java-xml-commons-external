@@ -3,12 +3,14 @@
 #   xml-commons), then obsolete xml-commons here
 #
 
+%{?use_default_jdk:%use_default_jdk 8}
+
 %define	srcname	xml-commons-external
 Summary:	Apache XML Commons External classes
 Summary(pl.UTF-8):	Klasy Apache XML Commons External
 Name:		java-xml-commons-external
 Version:	1.4.01
-Release:	5
+Release:	6
 License:	Apache v2.0
 Group:		Libraries/Java
 Source0:	https://downloads.apache.org/xerces/xml-commons/%{srcname}-%{version}-src.tar.gz
@@ -17,11 +19,11 @@ Source0:	https://downloads.apache.org/xerces/xml-commons/%{srcname}-%{version}-s
 Source1:	%{srcname}-build.xml
 URL:		https://xerces.apache.org/xml-commons/
 BuildRequires:	ant
-BuildRequires:	jdk
+%buildrequires_jdk
 BuildRequires:	jpackage-utils
 BuildRequires:	rpm >= 4.4.9-56
 BuildRequires:	rpm-javaprov
-BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	rpmbuild(macros) >= 1.556
 Requires:	jpackage-utils
 Provides:	java(xml-commons-apis) = %{version}
 Obsoletes:	java-xml-commons < 1.2
